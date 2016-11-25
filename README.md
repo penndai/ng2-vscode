@@ -1,6 +1,6 @@
 # Angular2Hello
 1. feature module --- seperate different features to single module
-![Create different feature module]("https://github.com/penndai/ng2-vscode/blob/master/screenshots/Todo.PNG "Seperate different modules")
+![Create different feature module](https://github.com/penndai/ng2-vscode/blob/master/screenshots/Todo.PNG "Seperate different modules")
 2. custom route ---- root route, child route
    for each sub module, can contains its own route
 ![custom route for Hero List and Edit detail](https://github.com/penndai/ng2-vscode/blob/master/screenshots/custom-route.PNG "Custom route")
