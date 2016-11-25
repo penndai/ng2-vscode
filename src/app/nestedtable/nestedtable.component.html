@@ -1,0 +1,31 @@
+
+<table>
+<thead>
+  <th>Step Name</th>
+</thead>
+<tbody>
+  <tr *ngFor="let item of _steps">
+    <td>
+      {{item.name}}
+    </td>
+    <td>
+      <table>
+        <thead>
+          <th>medication</th>
+          <th>dose</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let med of item._medication">
+            <td>
+              {{med._name}}
+            </td>
+            <td>
+              {{med._dose}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</tbody>
+</table>

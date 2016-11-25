@@ -1,0 +1,8 @@
+	<li>
+		Step Name: {{_pstep._name}}.
+	</li>
+	<ul>
+	<stepcomponent-medication *ngFor="let med of _pstep._medication;" [pmedication]="med"></stepcomponent-medication>
+	</ul>
+	
+ 

@@ -1,3 +1,265 @@
-<h1>
-  {{title}}
-</h1>
+
+<style>
+      body {
+      font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+      text-align: left;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      letter-spacing: 0.01rem;
+      color: #212121;
+      background-color: #f5f5f5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      margin: 0;
+      position: relative;
+    }
+    .datatable {
+      text-align: left;
+      width: 75%;
+      margin: 0 auto;
+    }
+    .datatable.scroll-vertical {
+      height: 70vh;
+    }
+    .selected-column {
+      background: #FFF;
+      -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+      -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+    }
+    .group {
+      position: relative;
+      margin-bottom: 45px;
+    }
+    input[type=text] {
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      background: transparent;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #5264AE;
+    }
+    input:focus {
+      outline: none;
+    }
+    a {
+      color: grey;
+      text-decoration: none;
+    }
+    .expander-btn {
+      margin-top:8px;
+      display:block;
+    }
+    h3 {
+      background: #1f89ff;
+      margin: 0 0 30px 0;
+      color: #FFF;
+      text-align: left;
+      padding: 10px;
+      overflow: hidden;
+      height: 32px;
+    }
+    h3 a {
+      color: #ccc;
+    }
+    h3 small {
+      margin-left: 10px;
+      font-size: .8rem;
+    }
+    .fullscreen {
+      position: absolute !important;
+      height: auto !important;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+    }
+    .selection-cell .datatable-body-cell.active{
+      background: #0829e0 !important;
+      color: #FFF !important;
+    }
+    .selected-column {
+      float: right;
+      width: 20%;
+      margin-right: 20px;
+      text-align: left;
+    }
+    .selected-column h4 {
+      text-align: center;
+      margin: 10px 0 0 0;
+      padding: 0;
+    }
+    ul, li {
+      padding:0;
+      margin:0;
+      list-style:none;
+    }
+    
+    ul {
+      margin: 10px;
+    }
+    li {
+      padding: 3px 5px;
+    }
+    nav {
+      background: #FFF;
+      z-index: 99;
+      top:0;
+      left:0;
+      height: 100%;
+      width: 180px;
+      position: absolute;
+      min-height: 1200px;
+      font-size:14px;
+      box-shadow: 0 7px 8px -4px rgba(0,0,0,.2),0 13px 19px 2px rgba(0,0,0,.14),0 5px 24px 4px rgba(0,0,0,.12);
+    }
+    nav ul {
+      margin: 0 8px !important;
+    }
+    nav li {
+      padding: 0;
+    }
+    nav h3 {
+      font-size: 14px;
+      margin:0 0 10px 0;
+    }
+    nav h4 {
+      margin: 7px 0 0 0;
+    }
+    nav h4 a {
+      color:#000;
+    }
+    content {
+      margin-left: 180px;
+      min-height: 100vh;
+      display:block;
+      position: relative;
+      padding-bottom: 20px;
+    }
+    content h3 {
+      padding-left: 35px;
+    }
+    .main-ul {
+      margin-left: 15px !important;
+      display: block;
+    }
+    .github-button-wrap {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+   </style>
+
+
+ 
+ <script src="https://buttons.github.io/buttons.js"></script>
+
+<div>
+
+      <h3>
+        Row Detail Demo
+        <br />
+        <small style="position:absolute;right:20px;top:5px;">
+          <button (click)="mydatatable.expandAllRows()">Expand All</button>
+          <button (click)="mydatatable.collapseAllRows()">Collapse All</button>
+        </small>
+      </h3>
+      <datatable
+        #mydatatable
+        class='material expandable'
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="50"
+        [detailRowHeight]="100"
+        [scrollbarV]="50"
+        [rows]='rows'
+        (page)="onPage($event)">
+        <datatable-row-detail-template>
+          <template let-row="row">
+            <div style="padding-left:35px;">
+              <div><strong>Medication</strong></div>
+
+              
+              <div>{{row._medication[1]._name}}, {{row._medication[0]._name}}</div>
+              <!--<div>
+                <ul>
+                  <li *ngFor="let item of row._medication">
+                    {{item._name}}
+                  </li>
+                </ul>
+              </div>-->
+              <!--<div>
+                <table>
+                  <thead>
+                       <tr>
+                        <th style="text-align: center;">Medication name</th>
+                        <th style="text-align: center;">dose</th>
+                        <th style="text-align: center;">Instruction</th>
+                       </tr>
+                  </thead>
+                   <tbody>
+                     <tr>
+                       <td>a</td>
+                         <td>b</td>
+                           <td>c</td>
+                     </tr>
+                     <tr *ngFor= "let med of row._medication">
+                       <td>a</td>
+                         <td>b</td>
+                           <td>c</td>
+
+                      <td> {{ med._name }} </td>
+                      <td> {{ med._dose }}</td>
+                      <td>{{ med._name }}: {{med._dose}}</td>                      
+                    </tr>
+                   </tbody>
+                </table>
+              </div>
+            </div>
+          </template>
+        </datatable-row-detail-template>
+         <datatable-column
+          [width]="50"
+          [resizeable]="false"
+          [sortable]="false"
+          [draggable]="false"
+          [canAutoResize]="false">
+          <template let-row="row">
+            <a
+              href="#"
+              [class.icon-right]="!row.$$expanded"
+              [class.icon-down]="row.$$expanded"
+              title="Expand/Collapse Row"
+              (click)="toggleExpandRow(row)">
+            </a>
+          </template>
+        </datatable-column>
+        <datatable-column name="Index" width="80">
+          <template let-row="row">
+            <strong>{{row.$$index}}</strong>
+          </template>
+        </datatable-column>
+        <datatable-column name="Exapanded" width="80">
+          <template let-row="row">
+            <strong>{{row.$$expanded === 1}}</strong>
+          </template>
+        </datatable-column>
+        <datatable-column name="Name" width="200">
+          <template let-value="value">
+            <strong>{{value}}</strong>
+          </template>
+        </datatable-column>
+        <datatable-column name="Name" width="300">
+          <template let-row="row" let-value="value">
+            <i [innerHTML]="row['name']"></i> and <i>{{value}}</i>
+          </template>
+        </datatable-column>
+        
+      </datatable>
+    </div>-->
