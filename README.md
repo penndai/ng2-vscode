@@ -39,3 +39,8 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Some git commit/fetch/sync issue
+to fix issue 'Pull is not possible because you have unmerged files', using below commands:
+git fetch origin
+git reset --hard origin/master
