@@ -1,12 +1,14 @@
 # Angular2Hello
 1. feature module --- seperate different features to single module
+![Create different feature module]("https://github.com/penndai/ng2-vscode/blob/master/screenshots/Todo.PNG "Seperate different modules")
 2. custom route ---- root route, child route
    for each sub module, can contains its own route
+![custom route for Hero List and Edit detail](https://github.com/penndai/ng2-vscode/blob/master/screenshots/custom-route "Custom route")
 3. using 3rd party ng2-datatable component to display complicated table(nested detail table)
    But at the moment, ng2-datable component doesn't support detail table, in the template, ngFor or another table template NOT working,
    I already report the issue to the author, they are investigating now.
+![nested table](https://github.com/penndai/ng2-vscode/blob/master/screenshots/nestedtable.png "Nested table")
 4. Todo demo, add double click edit function
-
 ![todo item](https://github.com/penndai/ng2-vscode/blob/master/screenshots/Todo.PNG "Double click edit todo item")
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
 
