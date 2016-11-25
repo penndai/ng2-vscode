@@ -7,6 +7,7 @@
    I already report the issue to the author, they are investigating now.
 4. Todo demo, add double click edit function
 
+![Alt text](/screenshots/Todo.png?raw=true "Double click edit todo item")
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
 
 ## Development server
